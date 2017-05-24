@@ -247,7 +247,10 @@ class TextViewCtrl {
   }
 
   render(room) {
-    return(room);
+    if (room) {
+      return(room.toString());
+    }
+    return('nada');
   }
 
   frender() {
