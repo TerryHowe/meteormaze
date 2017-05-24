@@ -2,7 +2,6 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import template from './mazeList.html';
 import { Rooms } from '../../api/rooms.js';
-import { Passages } from '../../api/passages.js';
  
 class MazeCtrl {
   constructor($scope) {
@@ -10,9 +9,6 @@ class MazeCtrl {
     this.helpers({
       rooms() {
         return Rooms.find({});
-      },
-      passages() {
-        return Passages.find({});
       }
     })
   }
