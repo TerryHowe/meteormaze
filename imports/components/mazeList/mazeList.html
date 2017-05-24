@@ -7,3 +7,8 @@
     {{room.x}},{{room.y}}: {{room.passages}}
   </li>
 </ul>
+<ul>
+  <li ng-repeat="passage in $ctrl.passages">
+    {{passage.source_id}},{{passage.destination_id}}: {{passage.direction}}
+  </li>
+</ul>
