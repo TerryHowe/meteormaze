@@ -1,16 +1,16 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import template from './mazeList.html';
+import { Rooms } from '../../api/rooms.js';
  
 class MazeCtrl {
-  constructor() {
-    this.tasks = [{
-      text: 'This is task 1'
-    }, {
-      text: 'This is task 2'
-    }, {
-      text: 'This is task 3'
-    }];
+  constructor($scope) {
+    $scope.viewModel(this);
+    this.helpers({
+      rooms() {
+        return Rooms.find({});
+      }
+    })
   }
 }
  
@@ -19,5 +19,5 @@ export default angular.module('maze', [
 ])
   .component('mazeList', {
     templateUrl: 'imports/components/mazeList/mazeList.html',
-    controller: MazeCtrl
+    controller: ['$scope', MazeCtrl]
   });
