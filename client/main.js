@@ -1,8 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-import mazeList from '../imports/components/mazeList/mazeList';
+import textView from '../imports/components/textView/textView';
  
-angular.module('simple-maze', [
+angular.module('text-maze', [
   angularMeteor,
-  mazeList.name
+  textView.name
 ]);
