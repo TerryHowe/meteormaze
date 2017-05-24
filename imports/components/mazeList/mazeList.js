@@ -21,8 +21,7 @@ class MazeCtrl {
     Rooms.insert({
       id: newRoomId,
       x: newRoomX,
-      y: newRoomY,
-      createdAt: new Date
+      y: newRoomY
     });
  
     // Clear form
