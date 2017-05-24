@@ -1,5 +1,13 @@
 <header>
   <h1>Maze</h1>
+
+  <form class="new-room" ng-submit="$ctrl.addRoom($ctrl.newRoomId, $ctrl.newRoomX, $ctrl.newRoomY)">
+    <input ng-model="$ctrl.newRoomId" type="number" name="id" placeholder="id value"/>
+    <input ng-model="$ctrl.newRoomX" type="number" name="x" placeholder="x coordinate"/>
+    <input ng-model="$ctrl.newRoomY" type="number" name="y" placeholder="y coordinate"/>
+    <input type="submit"/>
+  </form>
+  
 </header>
  
 <ul>

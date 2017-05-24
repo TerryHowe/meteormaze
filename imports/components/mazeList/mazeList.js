@@ -16,6 +16,20 @@ class MazeCtrl {
       }
     })
   }
+
+  addRoom(newRoomId, newRoomX, newRoomY) {
+    Rooms.insert({
+      id: newRoomId,
+      x: newRoomX,
+      y: newRoomY,
+      createdAt: new Date
+    });
+ 
+    // Clear form
+    this.newTaskId = '';
+    this.newTaskX = '';
+    this.newTaskY = '';
+  }
 }
  
 export default angular.module('maze', [
