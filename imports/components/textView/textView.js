@@ -247,15 +247,10 @@ class TextViewCtrl {
   }
 
   render(room) {
-    if (room) {
-      return(room.toString());
+    if (typeof room == 'undefined') {
+      return '';
     }
-    return('nada');
-  }
-
-  frender() {
-  /*
-    let room = Rooms.findOne({'id': 0});
+    let direction = 'N';
     let t = [VIEW.split("")]
     let left_room = room.goLeft(direction)
     let forward_room = room.goForward(direction)
@@ -305,10 +300,7 @@ class TextViewCtrl {
     let zip= rows=>rows[0].map((_,c)=>rows.map(row=>row[c]))
     let z = zip(t);
     let result = z.map(row => {return row.reduce((a,b) => {return a>b?a:b;})});
-  
-    return(result);
-  */
-    return('foo');
+    return(result.join(""));
   }
 }
  
