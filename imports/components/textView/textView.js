@@ -250,6 +250,14 @@ class TextViewCtrl {
     if (typeof room == 'undefined') {
       return '';
     }
+    let rooms = Rooms.find({}).fetch();
+    rooms.forEach(function(room) {
+      Object.keys(room.passages).forEach(function(key) {
+        room.passages[key] = rooms[room.passages[key]];
+      });
+    });
+    room = rooms[0];
+
     let direction = 'N';
     let t = [VIEW.split("")]
     let left_room = room.goLeft(direction)
