@@ -246,17 +246,21 @@ class TextViewCtrl {
     })
   }
 
-  render(room) {
-    if (typeof room == 'undefined') {
-      return '';
-    }
-    let rooms = Rooms.find({}).fetch();
+  get_room() {
+    let rooms = Rooms.find().fetch();
     rooms.forEach(function(room) {
       Object.keys(room.passages).forEach(function(key) {
         room.passages[key] = rooms[room.passages[key]];
       });
     });
-    room = rooms[0];
+    return(rooms[0]);
+  }
+
+  render(room) {
+    if (typeof room == 'undefined') {
+      return '';
+    }
+    room = this.get_room();
 
     let direction = 'N';
     let t = [VIEW.split("")]
