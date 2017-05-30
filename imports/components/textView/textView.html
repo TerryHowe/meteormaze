@@ -2,11 +2,11 @@
   <h1>Looking</h1>
 </header>
  
-<form class="new-task" ng-submit="$ctrl.addTask($ctrl.newTask)">
+<form class="new-task" ng-submit="$ctrl.goRight()">
 <input ng-model="$ctrl.newTask" type="text" name="text" placeholder="Type to add new tasks"/>
 <pre>
 
-{{$ctrl.view}}
+{{$ctrl.render()}}
 
 </pre>
 </form>

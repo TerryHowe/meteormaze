@@ -240,7 +240,7 @@ class TextViewCtrl {
   constructor($scope) {
     $scope.viewModel(this);
     this.direction = 'N';
-    this.view = this.render(this.direction);
+    this.view = this.render();
   }
 
   get_room() {
@@ -253,16 +253,10 @@ class TextViewCtrl {
     return(rooms[0]);
   }
 
-  render(direction) {
+  render() {
     let room = this.get_room();
     if (typeof room == 'undefined') {
-      return '';
-    }
-    if (direction == 'undefined') {
-      this.direction = 'E';
-    }
-    else {
-      this.direction = direction;
+      return 'nada';
     }
 
     let t = [VIEW.split("")]
@@ -317,7 +311,7 @@ class TextViewCtrl {
     return(result.join(""));
   }
 
-  addTask(newTask) {
+  goRight() {
     this.newTask = '';
     switch (this.direction) {
     case 'N':
@@ -333,7 +327,7 @@ class TextViewCtrl {
       this.direction = 'N';
       break;
     }
-    this.view = this.render(this.direction);
+    this.view = this.render();
   }
 }
  
