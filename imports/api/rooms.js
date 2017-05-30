@@ -4,6 +4,18 @@ export const Rooms = new Meteor.Collection("rooms",
 {
     transform:function(entry)
     {
+        entry.getBackwardDirection = function(direction) {
+          switch (direction) {
+          case 'N':
+            return('S');
+          case 'E':
+            return('W');
+          case 'S':
+            return('N');
+          default:
+            return('E');
+          }
+        };
         entry.getLeftDirection = function(direction) {
           switch (direction) {
           case 'N':
@@ -28,14 +40,17 @@ export const Rooms = new Meteor.Collection("rooms",
             return('N');
           }
         };
+        entry.goForward = function(direction) {
+          return(this.passages[direction]);
+        };
+        entry.goBackward = function(direction) {
+          return(this.passages[this.getBackwardDirection(direction)]);
+        };
         entry.goLeft = function(direction) {
           return(this.passages[this.getLeftDirection(direction)]);
         };
         entry.goRight = function(direction) {
           return(this.passages[this.getRightDirection(direction)]);
-        };
-        entry.goForward = function(direction) {
-          return(this.passages[direction]);
         };
         entry.toString = function() {
           return(this.x.toString() + "," + this.y.toString());
