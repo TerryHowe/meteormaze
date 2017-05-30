@@ -239,11 +239,8 @@ class TextViewCtrl {
 
   constructor($scope) {
     $scope.viewModel(this);
-    this.helpers({
-      view() {
-        return(this.render(this.direction));
-      }
-    })
+    this.direction = 'N';
+    this.view = this.render(this.direction);
   }
 
   get_room() {
@@ -319,9 +316,9 @@ class TextViewCtrl {
     let result = z.map(row => {return row.reduce((a,b) => {return a>b?a:b;})});
     return(result.join(""));
   }
+
   addTask(newTask) {
     this.newTask = '';
-    alert(this.direction);
     switch (this.direction) {
     case 'N':
       this.direction = 'E';
@@ -336,6 +333,7 @@ class TextViewCtrl {
       this.direction = 'N';
       break;
     }
+    this.view = this.render(this.direction);
   }
 }
  
