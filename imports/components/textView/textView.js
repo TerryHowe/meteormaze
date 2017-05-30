@@ -241,7 +241,7 @@ class TextViewCtrl {
     $scope.viewModel(this);
     this.helpers({
       room() {
-        return(this.render(Rooms.findOne({x: 0, y: 0})));
+        return(this.render(this.get_room()));
       }
     })
   }
