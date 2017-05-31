@@ -237,7 +237,7 @@ const FORWARD_RIGHT_FORWARD_LEFT = `
 
 class TextViewCtrl {
 
-  constructor($scope) {
+  constructor($scope, $document) {
     $scope.viewModel(this);
     this.view = '';
     this.x = 0;
@@ -247,6 +247,12 @@ class TextViewCtrl {
     this.subscribe('rooms', function() {
       this.createRoomMap();
       this.view = this.render();
+    });
+    var that = this;
+    $document.bind("keydown", function(event) {
+      $scope.$apply(function(){
+        that.handleKeyDown(event);
+      });
     });
   }
 
@@ -326,7 +332,6 @@ class TextViewCtrl {
   }
 
   handleKeyDown(e) {
-    this.newTask = '';
     switch (e.key) {
     case 'w':
       this.goForward();
@@ -396,5 +401,5 @@ export default angular.module('maze', [
 ])
   .component('textView', {
     templateUrl: 'imports/components/textView/textView.html',
-    controller: ['$scope', TextViewCtrl]
+    controller: ['$scope', '$document', TextViewCtrl]
   });
