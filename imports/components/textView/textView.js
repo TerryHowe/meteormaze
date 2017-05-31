@@ -276,6 +276,7 @@ class TextViewCtrl {
   render() {
     let room = this.getRoom();
     if (typeof room === 'undefined') {
+      this.header = 'no where';
       return 'nada';
     }
 
@@ -328,6 +329,7 @@ class TextViewCtrl {
     let zip= rows=>rows[0].map((_,c)=>rows.map(row=>row[c]))
     let z = zip(t);
     let result = z.map(row => {return row.reduce((a,b) => {return a>b?a:b;})});
+    this.header = 'some where';
     return(result.join(""));
   }
 
