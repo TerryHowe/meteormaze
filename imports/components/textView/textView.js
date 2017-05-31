@@ -275,7 +275,7 @@ class TextViewCtrl {
 
   render() {
     let room = this.getRoom();
-    if (typeof room == 'undefined') {
+    if (typeof room === 'undefined') {
       return 'nada';
     }
 
@@ -356,6 +356,16 @@ class TextViewCtrl {
   }
 
   goForward() {
+    let room = this.getRoom();
+    if (typeof room === 'undefined') {
+      return;
+    }
+    let forward_room = room.goForward(this.direction)
+    if (typeof forward_room === 'undefined') {
+      return;
+    }
+    this.x = forward_room.x;
+    this.y = forward_room.y;
   }
 
   goBackward() {
