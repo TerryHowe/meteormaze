@@ -244,10 +244,13 @@ class TextViewCtrl {
     this.y = 0;
     this.direction = 'N';
     this.rooms = {};
-    this.subscribe('rooms', function() { this.view = this.render();});
+    this.subscribe('rooms', function() {
+      this.createRoomMap();
+      this.view = this.render();
+    });
   }
 
-  getRoom() {
+  createRoomMap() {
     let roomy = Rooms.find().fetch();
     roomy.forEach(function(room) {
       Object.keys(room.passages).forEach(function(key) {
@@ -258,6 +261,9 @@ class TextViewCtrl {
     roomy.forEach(r => {
       this.rooms[r.getKey()] = r;
     });
+  }
+
+  getRoom() {
     return(this.rooms[this.x.toString() + "," + this.y.toString()]);
   }
 
