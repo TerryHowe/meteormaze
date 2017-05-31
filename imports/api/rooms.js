@@ -55,6 +55,9 @@ export const Rooms = new Meteor.Collection("rooms",
         entry.toString = function() {
           return(this.x.toString() + "," + this.y.toString());
         };
+        entry.getKey = function() {
+          return(this.x.toString() + "," + this.y.toString());
+        };
         return entry;
     }
 });
