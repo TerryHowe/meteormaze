@@ -243,21 +243,22 @@ class TextViewCtrl {
     this.x = 0;
     this.y = 0;
     this.direction = 'N';
+    this.rooms = {};
     this.subscribe('rooms', function() { this.view = this.render();});
   }
 
   getRoom() {
-    let rooms = Rooms.find().fetch();
-    rooms.forEach(function(room) {
+    let roomy = Rooms.find().fetch();
+    roomy.forEach(function(room) {
       Object.keys(room.passages).forEach(function(key) {
-        room.passages[key] = rooms[room.passages[key]];
+        room.passages[key] = roomy[room.passages[key]];
       });
     });
-    let roomMap = {}
-    rooms.forEach(r => {
-      roomMap[r.getKey()] = r;
+    this.rooms = {}
+    roomy.forEach(r => {
+      this.rooms[r.getKey()] = r;
     });
-    return(rooms[0]);
+    return(this.rooms[this.x.toString() + "," + this.y.toString()]);
   }
 
   render() {
