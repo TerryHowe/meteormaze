@@ -3,10 +3,12 @@
 </header>
  
 <form class="new-task" ng-submit="$ctrl.goRight()">
-<input ng-model="$ctrl.newTask" type="text" name="text" ng-keypress="$ctrl.handleKeyDown($event)" placeholder="Type to add new tasks"/>
+<input ng-model="$ctrl.newTask" type="text" name="text" placeholder="Type to add new tasks"/>
+<div ng-click="$ctrl.goRight()">
 <pre>
 
 {{$ctrl.render()}}
 
 </pre>
+</div>
 </form>
