@@ -240,22 +240,28 @@ class TextViewCtrl {
   constructor($scope) {
     $scope.viewModel(this);
     this.view = '';
+    this.x = 0;
+    this.y = 0;
     this.direction = 'N';
     this.subscribe('rooms', function() { this.view = this.render();});
   }
 
-  get_room() {
+  getRoom() {
     let rooms = Rooms.find().fetch();
     rooms.forEach(function(room) {
       Object.keys(room.passages).forEach(function(key) {
         room.passages[key] = rooms[room.passages[key]];
       });
     });
+    let roomMap = {}
+    rooms.forEach(r => {
+      roomMap[r.getKey()] = r;
+    });
     return(rooms[0]);
   }
 
   render() {
-    let room = this.get_room();
+    let room = this.getRoom();
     if (typeof room == 'undefined') {
       return 'nada';
     }
