@@ -360,15 +360,25 @@ class TextViewCtrl {
     if (typeof room === 'undefined') {
       return;
     }
-    let forward_room = room.goForward(this.direction)
-    if (typeof forward_room === 'undefined') {
+    let destination = room.goForward(this.direction)
+    if (typeof destination === 'undefined') {
       return;
     }
-    this.x = forward_room.x;
-    this.y = forward_room.y;
+    this.x = destination.x;
+    this.y = destination.y;
   }
 
   goBackward() {
+    let room = this.getRoom();
+    if (typeof room === 'undefined') {
+      return;
+    }
+    let destination = room.goBackward(this.direction)
+    if (typeof destination === 'undefined') {
+      return;
+    }
+    this.x = destination.x;
+    this.y = destination.y;
   }
 
   goLeft() {
