@@ -329,7 +329,7 @@ class TextViewCtrl {
     let zip= rows=>rows[0].map((_,c)=>rows.map(row=>row[c]))
     let z = zip(t);
     let result = z.map(row => {return row.reduce((a,b) => {return a>b?a:b;})});
-    this.header = 'some where';
+    this.header = this.direction + " from " + room.getKey();
     return(result.join(""));
   }
 
