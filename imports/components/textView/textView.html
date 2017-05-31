@@ -3,7 +3,7 @@
 </header>
  
 <form class="new-task" ng-submit="$ctrl.goRight()">
-<input ng-model="$ctrl.newTask" type="text" name="text" placeholder="Type to add new tasks"/>
+<input ng-model="$ctrl.newTask" type="text" name="text" ng-keypress="$ctrl.goRight()" placeholder="Type to add new tasks"/>
 <pre>
 
 {{$ctrl.render()}}
