@@ -311,8 +311,55 @@ class TextViewCtrl {
     return(result.join(""));
   }
 
-  goRight() {
+  handleKeyDown(e) {
     this.newTask = '';
+    switch (e.key) {
+    case 'w':
+      this.goForward();
+      this.view = this.render();
+      break;
+    case 'a':
+      this.goLeft();
+      this.view = this.render();
+      break;
+    case 's':
+      this.goBackward();
+      this.view = this.render();
+      break;
+    case 'd':
+      this.goRight();
+      this.view = this.render();
+      break;
+    default:
+      return;
+    }
+    return;
+  }
+
+  goForward() {
+  }
+
+  goBackward() {
+  }
+
+  goLeft() {
+    switch (this.direction) {
+    case 'N':
+      this.direction = 'W';
+      break;
+    case 'E':
+      this.direction = 'N';
+      break;
+    case 'S':
+      this.direction = 'E';
+      break;
+    default:
+      this.direction = 'S';
+      break;
+    }
+  }
+
+  goRight() {
     switch (this.direction) {
     case 'N':
       this.direction = 'E';
@@ -327,7 +374,6 @@ class TextViewCtrl {
       this.direction = 'N';
       break;
     }
-    this.view = this.render();
   }
 }
  
