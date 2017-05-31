@@ -58,3 +58,9 @@ export const Rooms = new Meteor.Collection("rooms",
         return entry;
     }
 });
+
+if (Meteor.isServer) {
+  Meteor.publish('rooms', function roomssPublication() {
+    return Rooms.find();
+  });
+}

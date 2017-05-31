@@ -239,6 +239,7 @@ class TextViewCtrl {
 
   constructor($scope) {
     $scope.viewModel(this);
+    this.subscribe('rooms');
     this.direction = 'N';
     this.view = this.render();
   }
