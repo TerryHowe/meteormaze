@@ -25,12 +25,13 @@ Giving the 3D Maze a shot using Meteor.
 
 # Start Development Server
 
-   npm start
+   meteor run
 
-# Run the Tests
+# Docker build
 
-   yarn test
+   docker build --tag terrylhowe/meteormaze:latest .
 
-# Bundle Static Files for Production
+# Docker run
 
-   yarn build
+    docker run -e "MONGO_URL=mongodb://${MONGO_USER}:${MONGO_PASSWORD}@ds161001.mlab.com:61001/maze" terrylhowe/meteormaze
+
